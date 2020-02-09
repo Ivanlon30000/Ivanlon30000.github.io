@@ -1,1331 +1,879 @@
+<!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8" />
-<meta name="description" content="" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>
-    某愚蠢的blog
-</title>
-<link rel="shortcut icon" href="https://Ivanlon30000.github.io/favicon.ico?v=1581250608819">
-<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
-<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  <head>
+      <meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="keywords" content="">
+<meta name="description" content="某愚蠢的blog">
+<meta name="theme-color" content="">
+<title>某愚蠢的blog</title>
+<link rel="shortcut icon" href="https://Ivanlon30000.github.io/favicon.ico?v=1581251004950">
 <link rel="stylesheet" href="https://Ivanlon30000.github.io/styles/main.css">
-<!-- js -->
-<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://Ivanlon30000.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
+<link rel="stylesheet" href="/media/css/pisces.css">
 
-</head>
+<link rel="stylesheet" href="/media/fonts/font-awesome.css">
+<link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Rosario:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
 
-<body>
-    <div class="main">
-        <div class="header">
-    <div class="nav">
-        <div class="logo">
-            <a href="https://Ivanlon30000.github.io">
-                <img class="avatar" src="https://Ivanlon30000.github.io/images/avatar.png?v=1581250608819" alt="">
-            </a>
-            <div class="site-title">
-                <h1>
-                    某愚蠢的blog
-                </h1>
-            </div>
+<link href="/media/hljs/styles/.css" rel="stylesheet">  
+
+<script src="/media/hljs/highlight.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.0/velocity.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.0/velocity.ui.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+
+  </head>
+  <body>
+    <div class="head-top-line"></div>
+    <div class="header-box">
+      
+<div class=" ">
+  <header class="header  ">
+    <div class="blog-header box-shadow-wrapper  " id="header">
+      <div class="nav-toggle" id="nav_toggle">
+        <div class="toggle-box">
+          <div class="line line-top"></div>
+          <div class="line line-center"></div>
+          <div class="line line-bottom"></div>
         </div>
-        <span class="menu-btn fa fa-align-justify"></span>
-        <div class="menu-container">
-            <ul>
-                
-                    
-                            <li>
-                                <a href="/" class="menu">
-                                    首页
-                                </a>
-                            </li>
-                            
-                                
-                    
-                            <li>
-                                <a href="/tags" class="menu">
-                                    标签
-                                </a>
-                            </li>
-                            
-                                
-                    
-                            <li>
-                                <a href="/post/about" class="menu">
-                                    关于
-                                </a>
-                            </li>
-                            
-                                
-            </ul>
+      </div>
+      <div class="site-meta">       
+        <div class="site-title">
+          
+            <a href="/" class="brand">
+              <span>某愚蠢的blog</span>
+            </a>  
+          
         </div>
-    </div>
-</div>
-
-<script>
-    $(document).ready(function() {
-        $(".menu-btn").click(function() {
-            $(".menu-container").slideToggle();
-        });
-        $(window).resize(function() {
-
-            if (window.matchMedia('(min-width: 960px)').matches) {
-                $(".menu-container").css('display', 'block')
-            } else {
-                $(".menu-container").css('display', 'none')
-            }
-
-        });
-    });
-</script>
-
-            <div id="main-content" class="post-container main-container">
-                <div id="content" class="main-container-left">
-                    
         
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://Ivanlon30000.github.io/post/ke-cheng-bi-ji-ji-qi-xue-xi-shi-zhan-ch10-k-means">
-                        [课程笔记] 机器学习实战 ch10-k-means
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2019-12-09</time>
-                    
-                        <a href="https://Ivanlon30000.github.io/tag/G6BCazp1F" class="post-tag i-tag
-                            i-tag-other_4">
-            #课程笔记
-        </a>
-                        
-                        <a href="https://Ivanlon30000.github.io/tag/hRi3ZsCyn7" class="post-tag i-tag
-                            i-tag-other_1">
-            #机器学习
-        </a>
-                        
-                </div>
-                <div class="post-article">
-                    
-                            <div class="post-content">
-                                
-                                        <div class="post-content-content">
-                                            k-means K均值聚类算法
-IDEA
-无监督学习
-不给定目标变量
-簇
-一类数据
-质心(centroid)
-一组数据的中心, 一般是取均值
-平方误差和
-平方误差和 (SSE, Sum of Squared Error): 样本点与质心距离的平方和
-
-SSE 值越小，表示越接近它们的质心. 由于对误差取了平方，因此更加注重那么远离中心的点
-
-算法过程
-
-随机选取 k 个点作为起始质心, 一般是随机选取
-选取一个样本点, 将其归到最近质心的簇
-更新质心
-重复 2. 3. 直至所有样本点的分类结果不发生变化
-
-后处理
-随机选择的初始质心以及不合适的k值可能导致算法收敛到局部最小值, 使用后处理方法改善这种情况.
-
-二分 k-means (bisecting k-means)
-克服 k-means 算法收敛到局部最小值的问题. 算法流程:
-
-所有样本点看做同一个簇
-选择一个簇将其一分为二使得 SSE 最大程度地减小
-重复步骤 2. 直至簇的数目达 k
-
-CODE
-k-means
-def calc_dist(vecA, vecB):
-	&amp;quot;&amp;quot;&amp;quot;
-	计算距离, 这里用的是欧氏距离
-	&amp;quot;&amp;quot;&amp;quot;
-	return sqrt(sum(power(vecA - vecB), 2))
-
-def rand_cent(data, k):
-	&amp;quot;&amp;quot;&amp;quot;
-	随机初始化质心
-	&amp;quot;&amp;quot;&amp;quot;
-	n = data.shape[1]
-	centroids = zeros((k, n))
-	
-	for j in range(n):
-		min_j = data[:, j].min()
-		max_j = data[:, j].max()
-		range_j = max_j - min_j
-		centroids[:, j] = min_j + range_j * random.rand(k, 1)
-
-	return centroids
-
-def k_means(data, k, dist_func=calc_dist, init_cent=rand_cent):
-	&amp;quot;&amp;quot;&amp;quot;
-	k-means 算法
-	dist_func: 计算距离的函数
-	init_cent: 初始化质心的函数
-	&amp;quot;&amp;quot;&amp;quot;
-	m, n = data.shape
-	
-	# 初始化质心和簇
-	cents = init_cent(data, k)				
-	clusters_comp = -1 * ones((m, 2))
-	
-	cluster_changed = -1
-	while cluster_changed != 0:
-		cluster_changed = 0
-		
-		for i in range(m):
-			# 对每一个样本点
-			sample = data[i, :]
-			# 计算距样本点最近的质心
-			min_index, min_dist = min([
-				(index, dist_func(sample, cents[index])) 
-				for index in range(k)
-			], key=lambda x: x[1])
-			
-			if clusters_comp[i, 0] != min_index:
-				# 当前计算出的最近质心与之前的不同, 则更新样本点所属的簇
-				clusters_comp[i, :] = min_index, min_dist**2
-				cluster_changed += 1
-		
-		for cent_i in range(k):
-			# 更新每一个簇的质心
-			samples_in_cluster = data[nonzero(clusters_comp[:, 0].A==cent_i)[0]]
-			centroids[cent_i, :] = mean(samples_in_cluster, axis=0)
-			
-		return centriods, clusters_comp	
-
-二分 k-meas
-def bi_k_means(data, k, dist_func=calc_dist):
-	&amp;quot;&amp;quot;&amp;quot;
-	二分k-means
-	&amp;quot;&amp;quot;&amp;quot;
-	m, n = data.shape
-	clusters_comp = zeros((m, 2))
-	centroids = [mean(data, axis=0).tolist()[0], ]
-	
-	for j in range(m):
-		clusters_comp[j, 1] = dist_func(sample, centriods[0])
-
-	while(len(centroids) &amp;lt; k):
-		min_SSE = inf
-		
-		for i, cent in enumerate(centroids):
-			# 对每一个质心, 尝试划分
-			samples_in_cluster = data[nonzero(clusters_comp[:, 0].A==i)[0], :]
-			new_centroids, new_clusters_comp = k_means(samples_in_cluster, 2, dist_func)
-			SSE_splited = sum(new_clusters_comp[:,1]) 
-			SSE_not_splited = sum(clusters_comp[nonzero(clusters_comp[:, 0].A!=i)[0], 1]
-			if SSE_splited + SSE_not_splited &amp;lt; min_SSE:
-				# 如果划分后SSE减小
-				best_split_cent = i
-				best_new_centriods = new_centroids
-				best_clusters_comp = new_clusters_comp
-				min_SSE = SSE_splited + SSE_not_splited
-		
-		best_clusters_comp[nonzeros(best_clusters_comp[:, 0].A==1)[0], 0] = len(centroids)
-		best_clusters_comp[nonzeros(best_clusters_comp[:, 0].A==0)[0], 0] = best_split_cent 
-		centroids[best_split_cent] = best_new_centriods[0, :]
-		centroids.append(best_new_centriods[1, :])
-		clusters_comp[nonzero(clusters_comp[:, 0].A==best_split_cent)[0], :] = best_clusters_comp 
-	
-	return centroids, clusters_comp
-
-DETAIL AND MORE
-
-k-means 优点是易于实现, 但可能收敛到局部最小值, 大规模数据收敛较慢 (因为每次更新都要遍历整个数据集)
-质心距离可以用任意距离公式, 但最后结果将受计算距离函数的影响
-
-
-                                        </div>
-                                        
-                                            <a class="btn btn-text" href="https://Ivanlon30000.github.io/post/ke-cheng-bi-ji-ji-qi-xue-xi-shi-zhan-ch10-k-means">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://Ivanlon30000.github.io/post/ke-cheng-bi-ji-ji-qi-xue-xi-shi-zhan-ch8-regression">
-                        [课程笔记] 机器学习实战 ch8-Regression
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2019-12-09</time>
-                    
-                        <a href="https://Ivanlon30000.github.io/tag/G6BCazp1F" class="post-tag i-tag
-                            i-tag-other_4">
-            #课程笔记
-        </a>
-                        
-                        <a href="https://Ivanlon30000.github.io/tag/hRi3ZsCyn7" class="post-tag i-tag
-                            i-tag-info">
-            #机器学习
-        </a>
-                        
-                </div>
-                <div class="post-article">
-                    
-                            <div class="post-content">
-                                
-                                        <div class="post-content-content">
-                                            Regression 回归
-IDEA
-预测
-KNOWLEDGE
-线性回归 普通最小二乘法 (OLS, Ordinary Least Squares)
-y=xTwy=x^T w
-y=xTw
-自变量矩阵 Xm×nX_{m\times n}Xm×n​, 因变量向量 Ym×1Y_{m\times 1}Ym×1​, 权重向量 wn×1w_{n\times 1}wn×1​
-对于每一个 xxx, 预测y^=xTw^\hat{y}=x^T \hat{w}y^​=xTw^, 求 w^\hat{w}w^ 使得误差最小, 即
-∑j=1m(y^j−yj)2=(Y−Xw)T(Y−Xw)\sum_{j=1}^m{(\hat{y}_j - y_j)^2} = (Y-Xw)^T(Y-Xw)
-j=1∑m​(y^​j​−yj​)2=(Y−Xw)T(Y−Xw)
-最小.
-令 (Y−Xw)T(Y−Xw)(Y-Xw)^T(Y-Xw)(Y−Xw)T(Y−Xw) 对 www 求导等于零, 得
-w^=(XTX)−1XTY\hat{w} = (X^T X)^{-1} X^T Y
-w^=(XTX)−1XTY
-局部加权线性回归 (LWLR, Locally Weighted Linear Regression)
-引入偏差从而降低均方误差.
-给带测点附近每一个临近点赋一个权重, 在这个子集上基于最小均方差进行普通的回归:
-w^=(XTWX)−1XTWY\hat{w} = (X^T W X)^{-1} X^TWY
-w^=(XTWX)−1XTWY
-其中 WWW 是一个矩阵, 用于给每一个点赋予权重.
-LWLR 使用&amp;quot;核&amp;quot;来对附近的点赋予权重, 常用的核有高斯核:
-w(i,i)=exp⁡(∣x(i)−x∣2−2k2)w(i, i) = \exp{(\frac{|x^{(i)}-x|^2}{-2k^2})}
-w(i,i)=exp(−2k2∣x(i)−x∣2​)
-x(i)x^{(i)}x(i) 与 xxx 越近, 权重越大.
-缩减 (Shrink) 系数来&amp;quot;理解&amp;quot;数据
-问题: 数据特征比样本点数还要多怎么办? (m&amp;lt;nm&amp;lt;nm&amp;lt;n)
-此时 XTXX^T XXTX 非满秩, 不能求逆
-
-岭回归
-把 XTXX^T XXTX 加上一个 λ\lambdaλ 倍单位矩阵, 使其满秩, 即
-
-w^=(XTX+λI)−1XTY\hat{w} = (X^T X + \lambda \bold{I} )^{-1} X^TY
-w^=(XTX+λI)−1XTY
-
-岭回归最先用来处理特征多于样本的情况, 现在也用于在估计中加入方差, 从而得到更好的估计.这里通过引入 λ\lambdaλ 限制了所有 www 的和, 引入该项惩罚能够减少不重要的参数.
-
-
-lasso
-
-∑k=1n∣wk∣≤λ\sum_{k=1}^{n}{|w_k| \le \lambda}
-k=1∑n​∣wk​∣≤λ
-
-前向逐步归回
-
-偏差 (bias) 与方差 (variance)
-
-
-方差是模型之间的差异
-
-方差度量了同样大小的训练集的变动所导致的学习性能的变化, 即 刻画了数据扰动造成的影响
-
-
-
-偏差是模型预测值与数据之间的差异
-
-偏差度量了学习算法的期望预测与真实结果的偏离程度, 即 刻画了 学习算法本身的拟合能力
-
-
-
-噪声
-
-噪声表达了在当前任务上任何学习算法所能达到的期望泛化误差的下界, 即 刻画了学习问题本身的难度
-
-
-
-
-
-应用&amp;quot;缩减&amp;quot;方法时, 模型加入了偏差, 但减小了方差.
-
-
-CODE
-标准回归函数
-def stand_regression(X, Y):
-	&amp;quot;&amp;quot;&amp;quot;
-	标准回归
-	&amp;quot;&amp;quot;&amp;quot;
-	Y = Y.T
-	
-	XTX = x.T * X
-	if linalg.det(XTX) == 0:
-		# 矩阵非满秩, 不能求逆
-		return
-	
-	w = XTX.I * (X.T * Y)
-	return ws
-
-局部加权线性回归
-def LWLR(pred_point, X, Y, k=1.0):
-	&amp;quot;&amp;quot;&amp;quot;
-	使用高斯核的局部加权线性回归
-	pred_point: 待预测的点
-	&amp;quot;&amp;quot;&amp;quot;
-	Y = Y.T
-	m = X.shape[0]
-	weights = eye(m)
-	
-	for i in range(m):
-		diff = pred_point - X[i, :]
-		weights[i, i] = exp(diff * diff.T / (-2 * k**2))
-	
-	XTX = X.T * (weights * X)
-	if linalg.det(XTX) == 0:
-		# 矩阵非满秩, 不能求逆
-		return
-	
-	ws = XTX.I * X.T * weights * Y
-	return pred_point * ws
-
-def test_LWLR(test_arr, X, Y, k=1.0)
-	&amp;quot;&amp;quot;&amp;quot;
-	测试使用局部加权线性回归
-	&amp;quot;&amp;quot;&amp;quot;
-	m = test_arr.shape[0]
-	y_hat = zeros(m)
-	
-	for i in range(m):
-		y_hat[i] = LWLR(test_arr[i], X, Y, k)
-	
-	return y_hat
-
-岭回归
-def ridge_regression(X, Y, lam=0.2):
-	&amp;quot;&amp;quot;&amp;quot;
-	岭回归
-	&amp;quot;&amp;quot;&amp;quot;
-	Y = Y.T
-	n = X.shape[1]
-
-	XTX = X.T * X + lam * eye(n)
-	if linalg.det(XTX) == 0:
-		# 矩阵非满秩, 不能求逆
-		return
-
-	ws = XTX.I * X.T * Y
-	return ws
-
-前向逐步归回
-(略)
-DETAIL AND MORE
-岭回归中 λ\lambdaλ 对系数的影响
-
-
-                                        </div>
-                                        
-                                            <a class="btn btn-text" href="https://Ivanlon30000.github.io/post/ke-cheng-bi-ji-ji-qi-xue-xi-shi-zhan-ch8-regression">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://Ivanlon30000.github.io/post/ke-cheng-bi-ji-ji-qi-xue-xi-shi-zhan-ch7-adaboost">
-                        [课程笔记] 机器学习实战 ch7-AdaBoost
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2019-12-09</time>
-                    
-                        <a href="https://Ivanlon30000.github.io/tag/G6BCazp1F" class="post-tag i-tag
-                            i-tag-">
-            #课程笔记
-        </a>
-                        
-                        <a href="https://Ivanlon30000.github.io/tag/hRi3ZsCyn7" class="post-tag i-tag
-                            i-tag-success">
-            #机器学习
-        </a>
-                        
-                </div>
-                <div class="post-article">
-                    
-                            <div class="post-content">
-                                
-                                        <div class="post-content-content">
-                                            AdaBoost 元算法
-IDEA
-多个弱分类器组合为一个强分类器
-KNOWLEDGE
-
-
-Bagging 算法和 Boosting 算法
-Bagging 算法是随机替换掉原始数据集中的某一个样本, 重复 s 次形成 s 个样本数据集, 将学习算法应用于这 s 个数据集形成 s 个弱分类器, 使用多数表决的方法组合成一个强分类器;
-Boosting 算法与 Bagging 算法类似, 但 Boosting 算法重点关注分类器分错的数据.
-AdaBoost 是一种比较流行的 Boosting 算法.
-
-
-AdaBoost 的运行过程
-
-给数据集中每一个样本赋一个 权重 di=n−1d_i=n^{-1}di​=n−1, 这些权重值构成一个维度为 nnn 的向量 d⃗(0)\vec{d}^{(0)}d(0);
-根据数据集训练一个弱分类器 CjC_jCj​, 根据其分类错误率赋其一个 决定系数 αj\alpha_jαj​;
-αj\alpha_jαj​ 的表达式为:
-
-
-
-
-根据分类结果调整每个样本的权重 did_idi​, 使得正确分类的样本的权重减小, 错误分类的样本的权重增大, 但保持 did_idi​ 的和为 111; d⃗\vec{d}d 的表达式为:
-
-di(j)=di(j−1)e−αj∑d(j−1)⃗,j=1,2,3,...,m,i=1,2,3,...,nd_i^{(j)} =  \frac{d_i^{(j-1)} e^{-\alpha_j}}{\sum{\vec{d^{(j-1)}}}}, \qquad j = 1,2,3,...,m,\quad i=1,2,3,...,n
-di(j)​=∑d(j−1)di(j−1)​e−αj​​,j=1,2,3,...,m,i=1,2,3,...,n
-
-继续训练, 每次训练都调整样本的权重, 直至分类错误率为 000 或训练出指定数目的分类器, 分类器个数为 mmm;
-
-训练结果就是得到 jjj 个分类器和他们的权重向量 α⃗\vec{\alpha}α.
-
-
-
-单层决策树构建弱分类器
-又称之为 树桩分类器
-
-
-CODE
-单层决策树
-
-定义函数
-
-def stump_classify(data, dimen, thres_val, thres_ineq):
-	&amp;quot;&amp;quot;&amp;quot;
-	单层决策树定位
-	data: 样本矩阵, mxn, m个样本, n维特征
-	&amp;quot;&amp;quot;&amp;quot;
-	ret = ones((data.shape[0], 1))
-	if thres_ineq == &#39;&amp;lt;&#39;:
-		ret[data[:, dimen] &amp;lt; thres_val] = -1
-	else:
-		ret[data[:, dimen] &amp;gt; thres_val] = -1
-		
-	return ret
-
-
-构造函数
-
-def build_stump(data, labels, d):
-	&amp;quot;&amp;quot;&amp;quot;
-	构造最佳的单层决策树
-	d: 数据的权重向量, mx1
-	&amp;quot;&amp;quot;&amp;quot;
-	lables = lables.T
-	m, n = data.shape
-	
-	steps = 10
-	best_stump = {}
-	best_class_est = zeros((m, 1))
-	min_err = inf
-	
-	for i in range(n):
-		# 对每一个特征
-		min_val = data[:, i].min()
-		max_val = data[:, i].max()
-		step_size = int((max_val - min_val) / steps)
-	
-		for j in range(-1, steps + 1):
-			# 对每一个步长
-	
-			for k in [&#39;&amp;lt;&#39;, &#39;&amp;gt;&#39;]:
-				# 对每一个符号
-				thres_val = min_val + j * step_size
-				pred = stump_classify(data, i, thres_val, k)
-				
-				# 分类错误的样本
-				errs = ones((m, 1))
-				errs[pred == lables] = 0
-				
-				# 更新最优单层决策树
-				weighted_err = d.T * errs
-				if weighted_err &amp;lt; min_err:
-					min_err = weighted_err
-					best_class_est = pred.copy()	# 预测结果
-					best_stump[&#39;dim&#39;] = i
-					best_stump[&#39;thres&#39;] = thres_val
-					best_stump[&#39;ineq&#39;] = k
-	
-	return best_stump, min_err, best_class_est
-
-AdaBoost 训练
-def adaboost_train(data, labels, max_iters=40):
-	&amp;quot;&amp;quot;&amp;quot;
-	AdaBoost 训练
-	max_iters: 分类器最大数目
-	&amp;quot;&amp;quot;&amp;quot;
-	weak_classifiers = []
-	m = data.shape[0]		# 样本数
-	d = ones((m, 1))/m
-	agg_class_est = zeros((m, 1)) 		# ?
-
-	for i in range(max_iters):
-		# 基于当前权重构建弱分类器
-		best_stump, error, class_est = build_stump(data, labels, d)
-		# 更新 alpha
-		alpha = 0.5 * log((1 - error) / error)	# 为防止下溢出, 分母可改为max(error, 1e-16)
-		# 更新 d
-		expon = -1 * alpha * (labels * class_est)	# 预测正确为 -alpha, 错误为 alpha
-		d = (d * exp(expon)) / d.sum()
-		# 保存分类器
-		best_stump[&#39;alpha&#39;] = alpha
-		waek_classifiers.append(best_stump)
-		# 考察当前模型, 即前 i 个弱分类器组成的强分类器, 的分类错误率
-		agg_class_est += alpha * class_est					# 强分类器的预测结果
-		err_rate = sign(agg_class_est != labels.T).sum()/m	# 强分类器的错误率
-		if err_rate == 0.0:
-			# 若当前强分类器错误率为0, 提前退出循环
-			break
-	
-	return weak_classifiers
-
-
-                                        </div>
-                                        
-                                            <a class="btn btn-text" href="https://Ivanlon30000.github.io/post/ke-cheng-bi-ji-ji-qi-xue-xi-shi-zhan-ch7-adaboost">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://Ivanlon30000.github.io/post/ke-cheng-bi-ji-ji-qi-xue-xi-shi-zhan-ch6-svm">
-                        [课程笔记] 机器学习实战 ch6-SVM
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2019-12-09</time>
-                    
-                        <a href="https://Ivanlon30000.github.io/tag/G6BCazp1F" class="post-tag i-tag
-                            i-tag-error">
-            #课程笔记
-        </a>
-                        
-                        <a href="https://Ivanlon30000.github.io/tag/hRi3ZsCyn7" class="post-tag i-tag
-                            i-tag-">
-            #机器学习
-        </a>
-                        
-                </div>
-                <div class="post-article">
-                    
-                            <div class="post-content">
-                                
-                                        <div class="post-content-content">
-                                            SVM 支持向量机
-IDEA
-使用一个超平面将数据分隔开, 决定这个超平面的只有&amp;quot;支持向量&amp;quot;(Support Vector); 并且支持向量与超平面的间隔(margin)最大化.
-KNOWLEDGE
-基本概念
-
-超平面 (Hyperplane)
-在 N 维空间中, N-1 维对象就称为超平面.
-超平面表达式:
-
-y=ωTx+by=\bold{\omega^Tx}+b
-y=ωTx+b
-
-
-支持向量 (Support Vector)
-某一类中距超平面最近的样本点
-
-
-间隔 (margin)
-超平面到点 x0\bold{x}_0x0​ 的距离
-
-
-m=∣ωTx⃗0+b∣∣∣ω∣∣m = \frac{|\bold{\omega^T\vec{x}_0}+b|}{||\bold{\omega}||}
-m=∣∣ω∣∣∣ωTx0​+b∣​
-
-label
-标签 labellabellabel 或记为 yyy 定义为 +1+1+1 或 −1-1−1
-
-
-问题思路
-即求解 ω\bold{\omega}ω 和 bbb
-
-最小间隔最大化
-
-构造最优化问题
-于是点 x0\bold{x}_0x0​ 到超平面的距离为:
-m=y0(ωTx⃗0+b)∣∣ω∣∣m = \frac{
-y_0 (\bold{\omega^T\vec{x}_0}+b)
-}{
-||\bold{\omega}||
-}
-m=∣∣ω∣∣y0​(ωTx0​+b)​
-则可构造如下求解最优的 ω\bold{\omega}ω 的最优化问题:
-arg max⁡w,b{min⁡ny(ωTx⃗+b)∣∣ω∣∣}\argmax_{w, b}  \{ \min_n 
-\frac{
-y (\bold{\omega^T\vec{x}}+b)
-}{
-||\bold{\omega}||
-}
-\}
-w,bargmax​{nmin​∣∣ω∣∣y(ωTx+b)​}
-化简/转化最优化问题
-上述最优化问题相当难解, 因此需要转化:
-若令
-y(ωTx⃗+b)=1y(\bold{\omega^T\vec{x}}+b) = 1
-y(ωTx+b)=1
-则只需求
-arg max⁡w,b{min⁡n1∣∣ω∣∣}\argmax_{w, b} \{ \min_n 
-\frac{1}{
-||\bold{\omega}||
-}
-\}
-w,bargmax​{nmin​∣∣ω∣∣1​}
-但显然不能恒成立, 那么令
-y(ωTxs+b)=1y (\bold{\omega^T x_s}+b) = 1
-y(ωTxs​+b)=1
-其中 xs\bold{x}_sxs​ 是每一类中距离超平面最近的点.
-显然对于其他的点,
-y(ωTx+b)≥1y (\bold{\omega^T x}+b) \ge 1
-y(ωTx+b)≥1
-为方便后续求解, 最优化问题
-min⁡n1∣∣w∣∣\min_n 
-\frac{1}{
-||\bold{w}||
-}
-nmin​∣∣w∣∣1​
-又可以转化为
-max⁡n12∣∣w∣∣2\max_n 
-\frac{1}{2} ||\bold{w}||^2
-nmax​21​∣∣w∣∣2
-加上约束, 完整表示为:
-max⁡n12∣∣w∣∣2\max_n 
-\frac{1}{2} ||\bold{w}||^2
-nmax​21​∣∣w∣∣2
-s.t.yi(wTxi+b)≥1i=1,2,3,...,ns.t.  \quad y_i(\bold{w}^T \bold{x}_i + b) \ge 1 \quad i=1,2,3,..., n
-s.t.yi​(wTxi​+b)≥1i=1,2,3,...,n
-
-
-拉格朗日函数
-有约束最优化问题 -&amp;gt; 无约束最优化问题
-
-
-原有约束最优化问题:
-max⁡n12∣∣w∣∣2\max_n 
-\frac{1}{2} ||\bold{w}||^2
-nmax​21​∣∣w∣∣2
-s.t.yi(wTxi+b)≥1i=1,2,3,...,ns.t.  \quad y_i(\bold{w}^T \bold{x}_i + b) \ge 1 \quad i=1,2,3,..., n
-s.t.yi​(wTxi​+b)≥1i=1,2,3,...,n
-转化为:
-L(w,b,α)=12∣∣w∣∣2−∑i=1nαi[yi(wTxi+b)−1]L(\bold{w}, b, \bold{\alpha}) = \frac{1}{2}||\bold{w}||^2 - \sum_{i=1}^{n} \alpha_i[y_i(\bold{w}^T \bold{x}_i + b) - 1]
-L(w,b,α)=21​∣∣w∣∣2−i=1∑n​αi​[yi​(wTxi​+b)−1]
-其中 α\bold{\alpha}α 是拉格朗日乘子, αi≥0\bold{\alpha}_i \ge 0αi​≥0
-
-
-KKT 条件
-对于最优化问题
-min⁡f(x)\min f(x)
-minf(x)
-s.t.gi(x)≤0,i=1,2,...,ns.t. g_i(x) \le 0, \quad i=1,2,...,n
-s.t.gi​(x)≤0,i=1,2,...,n
-hj(x)=0,j=1,2,...,mh_j(x) = 0, \quad j = 1,2,...,m
-hj​(x)=0,j=1,2,...,m
-其最优值条件满足
-
-f(x)f(x)f(x) 对 xix_ixi​ 求导为 0
-hj(x)=0h_j(x)=0hj​(x)=0
-αgk(x)=0\alpha g_k(x)=0αgk​(x)=0
-
-
-
-由 KKT 条件, 即
-∂L∂w=0\frac{\partial L}{\partial \bold{w}}=0
-∂w∂L​=0
-∂L∂b=0\frac{\partial L}{\partial b}=0
-∂b∂L​=0
-L(w,b,α)L(\bold{w}, b, \bold{\alpha})L(w,b,α)转化为
-L(w,b,α)=∑i=1nαi−12∑i,j=1nαiαjyiyjxiTxjL(\bold{w}, b, \bold{\alpha}) = 
-\sum_{i=1}^n{\alpha_i}
--\frac{1}{2}\sum_{i, j=1}^n{\alpha_i \alpha_j y_i y_j \bold{x}_i^T \bold{x}_j}
-L(w,b,α)=i=1∑n​αi​−21​i,j=1∑n​αi​αj​yi​yj​xiT​xj​
-
-
-拉格朗日对偶问题
-
-
-min⁡w,bmax⁡αi≥0L(w,b,α)⇔max⁡αi≥0min⁡w,bL(w,b,α)\min_{\bold{w}, b} \max_{\alpha_i \ge 0} L(\bold{w}, b, \bold{\alpha}) 
-\Leftrightarrow 
-\max_{\alpha_i \ge 0} \min_{\bold{w}, b} L(\bold{w}, b, \bold{\alpha}) 
-w,bmin​αi​≥0max​L(w,b,α)⇔αi​≥0max​w,bmin​L(w,b,α)
-
-即求解超平面的最优化问题最终化为:
-arg max⁡αi≥0L(α)\argmax_{\alpha_i \ge 0} L(\bold{\alpha}) 
-αi​≥0argmax​L(α)
-即
-arg max⁡α∑i=1nαi−12∑i,j=1nαiαjyiyjxiTxj\argmax_{\bold{\alpha}} \sum_{i=1}^n{\alpha_i}
--\frac{1}{2}\sum_{i, j=1}^n{\alpha_i \alpha_j y_i y_j \bold{x}_i^T \bold{x}_j}
-αargmax​i=1∑n​αi​−21​i,j=1∑n​αi​αj​yi​yj​xiT​xj​
-s.t.αi≥0s.t. \quad \alpha_i \ge 0
-s.t.αi​≥0
-∑i=1nαiyi=0,i=1,2,3,...,n\sum_{i=1}^n {\alpha_i y_i} = 0, \quad i=1,2,3,...,n
-i=1∑n​αi​yi​=0,i=1,2,3,...,n
-剩下的工作就是解这个最优化问题
-当数据不是严格可分的
-数据存在异常点, 引入松弛变量 (Slack Variable) ξ⃗\vec{\xi}ξ​
-原最优化问题转化为:
-max⁡n12∣∣w∣∣2−C∑i=1nξi\max_n 
-\frac{1}{2} ||\bold{w}||^2
--C\sum_{i=1}^n{\xi_i}
-nmax​21​∣∣w∣∣2−Ci=1∑n​ξi​
-s.t.yi(wTxi+b)≥1−ξi,i=1,2,3,...,ns.t.  \quad y_i(\bold{w}^T \bold{x}_i + b) \ge 1 - \xi_i, \quad i=1,2,3,..., n
-s.t.yi​(wTxi​+b)≥1−ξi​,i=1,2,3,...,n
-对应拉格朗如函数为:
-L(w,b,ξ,α,γ)=12∣∣w∣∣2−∑i=1nαi[yi(wTxi+b)−1+ξi]+C∑i=1nξi−∑i=1nγiξiL(\bold{w}, b, \xi, \bold{\alpha}, \bold{\gamma}) = \frac{1}{2}||\bold{w}||^2 
--\sum_{i=1}^{n} \alpha_i[y_i(\bold{w}^T \bold{x}_i + b) - 1 + \xi_i]
-+C\sum_{i=1}^n{\xi_i}
--\sum_{i=1}^n{\gamma_i\xi_i}
-L(w,b,ξ,α,γ)=21​∣∣w∣∣2−i=1∑n​αi​[yi​(wTxi​+b)−1+ξi​]+Ci=1∑n​ξi​−i=1∑n​γi​ξi​
-此时 ξ⃗\vec{\xi}ξ​ 也成为了拉格朗日函数的自变量.
-根据KKT条件, 对 w\bold{w}w, bbb, ξ\bold{\xi}ξ 求偏导, 令其等于 000, 可得约束条件
-s.t.w=∑i=1nαiyixi,i=1,2,...,ns.t. \qquad \bold{w} = \sum_{i=1}^n{\alpha_i y_i \bold{x}_i}, \qquad i=1,2,...,ns.t.w=i=1∑n​αi​yi​xi​,i=1,2,...,n
-∑i=1nαiyi=0,i=1,2,...,n\sum_{i=1}^n\alpha_i y_i = 0,  \qquad i=1,2,...,ni=1∑n​αi​yi​=0,i=1,2,...,n
-γi=−αi+C⇔0≤αi≤C,i=1,2,...,n\gamma_i = -\alpha_i + C \Leftrightarrow 0 \le \alpha_i \le C,  \qquad i=1,2,...,n
-γi​=−αi​+C⇔0≤αi​≤C,i=1,2,...,n
-将 w\bold{w}w 代入拉格朗日函数, 得
-L(w,b,α)=∑i=1nαi−12∑i,j=1nαiαjyiyjxiTxjL(\bold{w}, b, \bold{\alpha}) = 
-\sum_{i=1}^n{\alpha_i}
--\frac{1}{2}\sum_{i, j=1}^n{\alpha_i \alpha_j y_i y_j \bold{x}_i^T \bold{x}_j}
-L(w,b,α)=i=1∑n​αi​−21​i,j=1∑n​αi​αj​yi​yj​xiT​xj​
-s.t.∑i=1nαiyi=0,i=1,2,...,ns.t. 
-\sum_{i=1}^n\alpha_i y_i = 0,  \qquad i=1,2,...,ns.t.i=1∑n​αi​yi​=0,i=1,2,...,n
-0≤αi≤C,i=1,2,...,n0 \le \alpha_i \le C,  \qquad i=1,2,...,n
-0≤αi​≤C,i=1,2,...,n
-剩下的就是解这个最优化问题.
-
-SVM 有很多实现, 最流行的是 序列最小化 (SMO, Sequential Minimal Optimization) 算法
-
-CODE
-(略)
-DETAIL AND MORE
-
-核函数 (Kernel Function)
-将数据映射到高维空间, 使线性不可分数据变得线性可分
-如 径向基核函数:
-
-k(x,y)=exp⁡(−∣∣x−y∣∣22σ2)k(x, y) = \exp (\frac{-||x-y||^2}{2\sigma^2})
-k(x,y)=exp(2σ2−∣∣x−y∣∣2​)
-
-                                        </div>
-                                        
-                                            <a class="btn btn-text" href="https://Ivanlon30000.github.io/post/ke-cheng-bi-ji-ji-qi-xue-xi-shi-zhan-ch6-svm">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://Ivanlon30000.github.io/post/ke-cheng-bi-ji-ji-qi-xue-xi-shi-zhan-ch5-logisticregression">
-                        [课程笔记] 机器学习实战 ch5-LogisticRegression
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2019-12-09</time>
-                    
-                        <a href="https://Ivanlon30000.github.io/tag/G6BCazp1F" class="post-tag i-tag
-                            i-tag-success">
-            #课程笔记
-        </a>
-                        
-                        <a href="https://Ivanlon30000.github.io/tag/hRi3ZsCyn7" class="post-tag i-tag
-                            i-tag-error">
-            #机器学习
-        </a>
-                        
-                </div>
-                <div class="post-article">
-                    
-                            <div class="post-content">
-                                
-                                        <div class="post-content-content">
-                                            LOGISITC REGRESSION 逻辑回归
-IDEA
-根据现有数据对分类边界线进行拟合, 以此进行分类
-
-亦是概率预测.
-KNOWLEDGE
-回归
-假设现有一些数据点，用一条直线对这些点进行拟合, 拟合的过程就称作回归。
-Sigmoid 函数
-σ(z)=11+e−z\sigma(z) = \frac{1}{1+e^{-z}}
-σ(z)=1+e−z1​
-
-回归系数
-Sigmoid 函数输入记为zzz
-z=w0x0+w1x1+w2x2+...+wnxn=w⃗Txz=w_0x_0 + w_1x_1 + w_2x_2 + ... + w_nx_n=\vec{w}^Tx
-z=w0​x0​+w1​x1​+w2​x2​+...+wn​xn​=wTx
-回归系数
-w⃗=[w0,w1,...,wn]\vec{w}=[w_0, w_1, ... , w_n]
-w=[w0​,w1​,...,wn​]
-最优化方法解回归系数
-
-梯度上升/下降法
-
-w:=w+α▽f(w)w := w + \alpha \bigtriangledown f(w)
-w:=w+α▽f(w)
-其中 α\alphaα 是步长, ▽f(w)\bigtriangledown f(w)▽f(w)是梯度下降方向
-
-随机梯度上升/下降法
-...
-
-CODE
-def grad_ascent(datamat, labels, alpha=0.001, max_iters=500):
-	&amp;quot;&amp;quot;&amp;quot;
-	datamat:	mxn数据矩阵, m个样本, n维特征
-	labels:		mx1标签矩阵
-	&amp;quot;&amp;quot;&amp;quot;
-	m, n = dataset.shape
-	weights = ones((n, 1))
-	for k in range(max_iters):
-		pred = sigmoid(datamat * weights)
-		error = labels - pred 
-		weights += alpha * datamat.T * error
-	
-	return weights
-
-DETAIL AND MORE
-
-随机梯度最优化
-每次只用一个样本点更新权重, 而不需要遍历所有样本点
-改进的随机梯度最优化
-每次迭代减小步长
-
-
-                                        </div>
-                                        
-                                            <a class="btn btn-text" href="https://Ivanlon30000.github.io/post/ke-cheng-bi-ji-ji-qi-xue-xi-shi-zhan-ch5-logisticregression">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://Ivanlon30000.github.io/post/ke-cheng-bi-ji-ji-qi-xue-xi-shi-zhan-ch4-naivebayers">
-                        [课程笔记] 机器学习实战 ch4-NaiveBayers
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2019-12-09</time>
-                    
-                        <a href="https://Ivanlon30000.github.io/tag/G6BCazp1F" class="post-tag i-tag
-                            i-tag-">
-            #课程笔记
-        </a>
-                        
-                        <a href="https://Ivanlon30000.github.io/tag/hRi3ZsCyn7" class="post-tag i-tag
-                            i-tag-other_4">
-            #机器学习
-        </a>
-                        
-                </div>
-                <div class="post-article">
-                    
-                            <div class="post-content">
-                                
-                                        <div class="post-content-content">
-                                            Chapter 4 Naive Bayers 朴素贝叶斯
-IDEA
-若P1(x)&amp;gt;P2(x)P_1(x) &amp;gt; P_2(x)P1​(x)&amp;gt;P2​(x) 则类别1
-若P1(x)&amp;lt;P2(x)P_1(x) &amp;lt; P_2(x)P1​(x)&amp;lt;P2​(x) 则类别2
-KNOWLEDGE
-条件概率
-P(x,y∣ci)P(x,y|c_i)P(x,y∣ci​) 与 P(ci∣,x,y)P(c_i|,x,y)P(ci​∣,x,y)
-贝叶斯准则
-P(ci∣w⃗)=P(w⃗∣ci)P(ci)P(w⃗)P(c_i|\vec{w}) = \frac{P(\vec{w}|c_i)P(c_i)}{P(\vec{w})}
-P(ci​∣w)=P(w)P(w∣ci​)P(ci​)​
-朴素贝叶斯假设
-
-特征之间相互独立, 即
-
-P(w⃗∣ci)=∏j=0nP(wj∣ci)P(\vec{w}|c_i) = \prod_{j=0}^n P(w_j|c_i)
-P(w∣ci​)=j=0∏n​P(wj​∣ci​)
-
-每个特征同等重要
-
-这两个假设正是朴素所在, 虽然不严谨但是很好用.
-CODE
-训练器
-def trainNB(dataset, cats):
-	&amp;quot;&amp;quot;&amp;quot;
-	训练朴素贝叶斯模型
-	dataset: 	训练数据集
-	cats:		对应标签
-	&amp;quot;&amp;quot;&amp;quot;
-	num_samples = len(dataset)
-	len_sample = len(dataset[0])
-	
-	# p(c_i)
-	p_ci = sum(cats)/num_samples
-	
-	# p(w_j|c_i)
-	num_c0 = zeros(len_sample)
-	num_c1 = zeros(len_sample)
-	num_c0_base = 0
-	num_c1_base = 0
-	for j in range(num_samples):
-		sample = dataset[j]
-		if cats[j] == 0:
-			num_c0 += sample
-			num_c0_base += sum(sample)
-		else:
-			num_c1 += sample
-			num_c1_base += sum(sample)
-	
-	p0_vec = num_c0/num_c0_base
-	p1_vec = num_c1/num_c1_base
-	
-	return p0_vec, p1_vec, p_ci
-
-由于
-P(w⃗∣ci)=∏j=0nP(wj∣ci)P(\vec{w}|c_i) = \prod_{j=0}^n P(w_j|c_i)
-P(w∣ci​)=j=0∏n​P(wj​∣ci​)
-即任一 P(wj∣ci)=0P(w_j|c_i)=0P(wj​∣ci​)=0 则 P(w⃗∣ci)=0P(\vec{w}|c_i) =0P(w∣ci​)=0. 因此 num_c0, num_c1, num_c0_base, num_c1_base 可以初始化为:
-	num_c0 = ones(len_sample)
-	num_c1 = ones(len_sample)
-	num_c0_base = 2
-	num_c1_base = 2
-
-上述 P(wj∣ci)P(w_j|c_i)P(wj​∣ci​) 易下溢出, 改为取对数形式:
-	p0_vec = log(num_c0/num_c0_base)
-	p1_vec = log(num_c1/num_c1_base)
-
-分类器
-def classifyNB(data_vec, p0_vec, p1_vec, p_ci):
-	&amp;quot;&amp;quot;&amp;quot;
-	分类
-	data_vec: 向量形式的数据
-	&amp;quot;&amp;quot;&amp;quot;
-	p0 = sum(data_vec * p0_vec) + log(1 - p_ci)
-	p1 = sum(data_vec * p1_vec) + log(p_ci)
-	return 1 if p1 &amp;gt; p0 else 0
-
-DETAIL AND MORE
-
-&amp;quot;朴素&amp;quot;贝叶斯
-
-
-可以通过特征之间的条件独立性假设, 降低对数据量的要求. 独立性假设是指一个特征的取值与其他特征无关. 当然我们知道这个假设过于简单. 这就是之所以称为朴素贝叶斯的原因. 尽管条件独立性假设并不正确, 但是朴素贝叶斯仍是一种有效的分类器.
-
-
-                                        </div>
-                                        
-                                            <a class="btn btn-text" href="https://Ivanlon30000.github.io/post/ke-cheng-bi-ji-ji-qi-xue-xi-shi-zhan-ch4-naivebayers">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://Ivanlon30000.github.io/post/ke-cheng-bi-ji-ji-qi-xue-xi-ch3-decisiontree">
-                        [课程笔记] 机器学习实战 ch3-DecisionTree
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2019-12-09</time>
-                    
-                        <a href="https://Ivanlon30000.github.io/tag/G6BCazp1F" class="post-tag i-tag
-                            i-tag-other_4">
-            #课程笔记
-        </a>
-                        
-                        <a href="https://Ivanlon30000.github.io/tag/hRi3ZsCyn7" class="post-tag i-tag
-                            i-tag-info">
-            #机器学习
-        </a>
-                        
-                </div>
-                <div class="post-article">
-                    
-                            <div class="post-content">
-                                
-                                        <div class="post-content-content">
-                                            Decision Tree 决策树
-IDEA
-根据特征划分数据集进而构建决策树
-KEY
-熵(Entropy)
-符号 x 的信息定义为:
-l(x)=−log2p(x)l(x)=-log_2 p(x)
-l(x)=−log2​p(x)
-熵定义为l(x)的期望
-H=−∑i=1np(xi)log2p(xi)H = -\sum_{i=1}^np(x_i)log_2 p(x_i)
-H=−i=1∑n​p(xi​)log2​p(xi​)
-信息增益(Information Gain)
-哪个特征在划分数据集时起决定性作用: 使用某特征划分数据集后信息增益最大
-CODE
-
-划分数据集
-
-def split_dataset(dataset, axis, val):
-	&amp;quot;&amp;quot;&amp;quot;
-	划分数据集
-	dataset:	数据集
-	axis:		
-	val:		值
-	&amp;quot;&amp;quot;&amp;quot;
-	ret = []
-	for feat_vec in dataset:
-		if feat_vec[axis] == val:
-			ret.append(feat_vec[:axis] + feat_vec[:axis])
-	return ret
-
-
-选择最好的划分方式
-
-def choose_best(dataset):
-	&amp;quot;&amp;quot;&amp;quot;
-	从数据集中挑选一个划分数据集最有效的特征
-	dataset: 数据集
-	return 最有效的特征
-	&amp;quot;&amp;quot;&amp;quot;
-	num_feat = len(dataset[0]) - 1
-	# 划分前的香农熵
-	base_entropy = calc_Shannon_entropy(dataset)
-	
-	def info_gain(feat_index):
-		# 计算信息增益
-		feat_unis = set([x[feat_index] for x in dataset])
-		new_entropy = 0
-		for feat in feat_unis:
-			sub_dataset = split_dataset(dataset, feat_index, feat)
-			new_entropy += calc_Shannon_entropy(sub_dataset)
-		return base_entropy - new_entropy
-	
-	feat = max(list(range(num_feat)), key=info_gain)
-	return feat
-
-
-递归构建决策树
-
-def create_tree(data, labels):
-	&amp;quot;&amp;quot;&amp;quot;
-	递归构建决策树
-	&amp;quot;&amp;quot;&amp;quot;
-	classes = [x[-1] for x in data]
-	
-	# 数据集中的样本类别完全相同，也就是只有一个类
-	if classes.count(classes[0]) == len(classes):
-		return classes[0]
-
-	# 样本只有一个特征，也就是说做一层分类
-	if len(data[0]) == 1:
-		return majority_count(classes)
-	
-	# 挑选最好特征
-	best_feat = choose_best(data)
-	best_feat_label = labels[best_feat]
-	# 初始化决策数或子树
-	decision_tree = {best_feat_label:{}}
-	# 该特征所有可能取值
-	feat_vals = set([x[best_feat] for x in data])
-	
-	# 遍历所有可能取值
-	for val in feat_vals:
-		sub_labels = labels.copy()
-		del(sub_labels[best_feat])
-		# 数据集子集
-		sub_dataset = split_dataset(data, best_feat, val)
-		decision_tree[best_feat_label][val] = create_tree(sub_dataset, sub_labels)
-	
-	# 完成构建数或子树，return
-	return decision_tree
-
-DETAIL AND MORE
-
-如何构造决策树?
-根据当前数据集选择最有效特征划分数据集, 将划分出的子数据集再寻找最有效特征再划分(递归的过程), 直至子数据集中仅含一种类别的样本.
-考试手算信息增益
-
-
-
-                                        </div>
-                                        
-                                            <a class="btn btn-text" href="https://Ivanlon30000.github.io/post/ke-cheng-bi-ji-ji-qi-xue-xi-ch3-decisiontree">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://Ivanlon30000.github.io/post/ke-cheng-bi-ji-ji-qi-xue-xi-shi-zhan-ch2-knn">
-                        [课程笔记] 机器学习实战 ch2-kNN
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2019-12-08</time>
-                    
-                        <a href="https://Ivanlon30000.github.io/tag/G6BCazp1F" class="post-tag i-tag
-                            i-tag-primary">
-            #课程笔记
-        </a>
-                        
-                        <a href="https://Ivanlon30000.github.io/tag/hRi3ZsCyn7" class="post-tag i-tag
-                            i-tag-primary">
-            #机器学习
-        </a>
-                        
-                </div>
-                <div class="post-article">
-                    
-                            <div class="post-content">
-                                
-                                        <div class="post-content-content">
-                                            Chapter 2 kNN K近邻算法
-IDEA
-选择与输入样本最相近的 k 个样本进行比较, 统计这 k 个样本的标签, 待分类样本被归类为与统计的 k 个样本最相近的标签.
-KEYWORDS
-
-监督学习
-输入的是特征向量
-已有数据集
-k 临近, 多数表决, k 一般小于20
-三要素:
-
-k 值选择
-距离计算(如欧氏距离)
-分类决策规则(如多数表决)
-
-
-
-CODE
-def classify_kNN(inX, dataset, labels, k):
-    &amp;quot;&amp;quot;&amp;quot;
-    kNN 算法
-    inX:    待分类样本
-    dataset:已有的数据集
-    labels: 数据集对应标签
-    k:      参数k
-    &amp;quot;&amp;quot;&amp;quot;
-    # 求 inX 与已有数据集中每一个数据的&#39;距离&#39;
-    size = dataset.shape[0]
-    diff_mat = tile(inX, (size, 1)) - dataset
-    sq_diff_mat = diff_mat**2
-    sq_dis = sq_diff_mat.sum(axis=1)
-    # (索引)按距离排序
-    sorted_dist_indices = sq_dis.argsort()
-    class_count = {}
-    for i in range(k):
-        # 第 i 近的样本类别是 vote_label
-        vote_label = lables[sorted_dist_indices[i]]
-        # 
-        class_count[vote_label] = class_count.get(vote_label, 0) + 1
-    
-    # 分类结果是&#39;得票&#39;最高的那个类
-    result = max(class_count.keys(), key=lambda x: class_count[x])
-
-DETAIL AND MORE
-
-
-一般流程
-
-收集数据：任何方法
-准备数据：距离计算所需要的数值, 最好结构化的数据格式
-分析数据：任何方法
-测试数据：计算错误率
-使用算法：输入样本数据和结构化的输出结果，然后运行k-近邻算法判断输入数据分类结果
-
-
-
-归一化特征值
-
-Why
-特征向量的数量级不同
-How
-归一化: 将数据归一化到 [0,1) 之间:
-
-
-
-newValue=oldValue−minValuemaxValue−minValuenewValue = \frac{oldValue - minValue}{maxValue - minValue}
-newValue=maxValue−minValueoldValue−minValue​
-
-简单有效
-必须保存全部数据集(空间占用大)
-必须比较全部数据集(算法速度慢)
-不能给出数据的结构信息
-
-
-                                        </div>
-                                        
-                                            <a class="btn btn-text" href="https://Ivanlon30000.github.io/post/ke-cheng-bi-ji-ji-qi-xue-xi-shi-zhan-ch2-knn">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-                <!-- 翻页 -->
-                
-                </div>
-                <!--  -->
-                <div class="main-container-middle"></div>
-                <!--  -->
-                <div id="sidebar" class="main-container-right">
-
-                    <!-- 个人信息 -->
-                    
-    <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://Ivanlon30000.github.io/images/avatar.png?v=1581250608819)">
-        </div>
-        <h1 class="id_card-title">
-            某愚蠢的blog
-        </h1>
-        <h2 class="id_card-description">
-            某愚蠢的blog
-        </h2>
-        <!--  -->
-        <div class="id_card-sns">
-            <!-- github -->
-            
-                <a href="https://github.com/Ivanlon30000" target="_blank" rel="noopener noreferrer"><i
-                class="fa fa-github"></i></a>
-                
-                    <!-- twitter -->
-                    
-                            <!-- weibo -->
-                            
-                                    <!-- facebook -->
-                                    
-
-        </div>
+      </div>
+      <nav class="site-nav" id="site_nav">
+        <ul id="nav_ul">
+          
+            <li class="nav-item nav-item-active">
+              
+                <a href="/">
+                  <i class="fa fa-home"></i> 首页
+                </a>
+              
+            </li>
+          
+            <li class="nav-item ">
+              
+                <a href="/tags">
+                  <i class="fa fa-tags"></i> 标签
+                </a>
+              
+            </li>
+          
+            <li class="nav-item ">
+              
+                <a href="/post/about">
+                  <i class="fa fa-user"></i> 关于
+                </a>
+              
+            </li>
+          
+          <li class="nav-item">
+            <a>
+              <i class="fa fa-search"></i> 搜索
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
-    
-
-                        <!-- 公告栏 -->
-                        
-    <div class="notice-card i-card ">
-        <div class="notice-title i-card-title">公告</div>
-        <div class="notice-content">
-            这是公告栏
-        </div>
-    </div>
-    
-
-                </div>
-            </div>
-
-
-
-            <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
-  <a class="rss" href="https://Ivanlon30000.github.io/atom.xml" target="_blank">RSS</a>
+  </header>
 </div>
 
-<script>
-  hljs.initHighlightingOnLoad()
+<script type="text/javascript"> 
+ 
+  let showNav = true;
+
+  let navToggle = document.querySelector('#nav_toggle'),
+  siteNav = document.querySelector('#site_nav');
+  
+  function navClick() {
+    let sideBar = document.querySelector('.sidebar');
+    let navUl = document.querySelector('#nav_ul');
+    navToggle.classList.toggle('nav-toggle-active');
+    siteNav.classList.toggle('nav-menu-active');
+    if (siteNav.classList.contains('nav-menu-active')) {
+      siteNav.style = "height: " + (navUl.children.length * 42) +"px !important";
+    } else {
+      siteNav.style = "";
+    }
+  }
+
+  navToggle.addEventListener('click',navClick);  
 </script>
-
     </div>
-    <script>
-        $('#sidebar').stickySidebar({
-            topSpacing: 80,
-            // bottomSpacing: 60
-        });
-    </script>
-</body>
+    <div class="main-continer">
+      
+      <div class="section-layout  ">
+        <div class="section-layout-wrapper">
+          <div class="sidebar">
+    
+<div class="sidebar-wrapper box-shadow-wrapper bg-color">
+  <div class="sidebar-item">
+    <img class="site-author-image right-motion" src="https://Ivanlon30000.github.io/images/avatar.png"/>
+    <p class="site-author-name">某愚蠢的blog</p>
+    <p class="site-description right-motion"></p>
+  </div>
+  <div class="sidebar-item side-item-stat right-motion">
+    <div class="sidebar-item-box">
+      <a href="/archives/">
+        
+        <span class="site-item-stat-count">8</span>
+        <span class="site-item-stat-name">文章</span>
+      </a>
+    </div>
+    <div class="sidebar-item-box">
+      <a href="">
+        <span class="site-item-stat-count">2</span>
+        <span class="site-item-stat-name">分类</span>
+      </a>
+    </div>
+    <div class="sidebar-item-box">
+      <a href="/tags/">
+        <span class="site-item-stat-count">2</span>
+        <span class="site-item-stat-name">标签</span>
+      </a>
+    </div>
+  </div>
+  
+    
+      <div class="sidebar-item" style="border-top: 1px dotted #ccc; margin-top: 10px;">
+      </div>
+    
+  
+  
 
+
+</div>
+</div>
+          <div class="section-box ">
+            <section class="section bg-color posts-expand slide-down-in">
+              
+  <article class="post-list-box  post box-shadow-wrapper">
+    <div class="article-wrapper bg-color">
+      <header class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://Ivanlon30000.github.io/post/ke-cheng-bi-ji-ji-qi-xue-xi-shi-zhan-ch10-k-means">
+      [课程笔记] 机器学习实战 ch10-k-means
+    </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span>发布于</span>
+      <span>2019-12-09</span>
+    </span>
+    
+      <span class="meta-item">
+        <span class="post-meta-divider pc-show">|</span>
+        <i class="fa fa-folder-o"></i>
+        <span class="pc-show">分类于</span>
+        
+          
+            <a href="https://Ivanlon30000.github.io/tag/G6BCazp1F">
+              <span>课程笔记</span>
+            </a>、
+          
+        
+          
+            <a href="https://Ivanlon30000.github.io/tag/hRi3ZsCyn7">
+              <span>机器学习</span>
+            </a>
+          
+        
+      </span>
+      <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>4分钟</span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>786<span class="pc-show">字数</span></span>
+    </span>
+  </div>
+</header>
+      <div class="post-body">
+        
+          
+        
+        
+        <div class="post-button text-center">
+          <a class="btn" href="https://Ivanlon30000.github.io/post/ke-cheng-bi-ji-ji-qi-xue-xi-shi-zhan-ch10-k-means" rel="contents">
+            阅读全文 »
+          </a>
+        </div>
+        
+      </div>
+      
+        <footer class="post-footer">
+          <div class="post-eof"></div>
+        </footer>
+      
+    </div>
+  </article>
+
+  <article class="post-list-box  post box-shadow-wrapper">
+    <div class="article-wrapper bg-color">
+      <header class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://Ivanlon30000.github.io/post/ke-cheng-bi-ji-ji-qi-xue-xi-shi-zhan-ch8-regression">
+      [课程笔记] 机器学习实战 ch8-Regression
+    </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span>发布于</span>
+      <span>2019-12-09</span>
+    </span>
+    
+      <span class="meta-item">
+        <span class="post-meta-divider pc-show">|</span>
+        <i class="fa fa-folder-o"></i>
+        <span class="pc-show">分类于</span>
+        
+          
+            <a href="https://Ivanlon30000.github.io/tag/G6BCazp1F">
+              <span>课程笔记</span>
+            </a>、
+          
+        
+          
+            <a href="https://Ivanlon30000.github.io/tag/hRi3ZsCyn7">
+              <span>机器学习</span>
+            </a>
+          
+        
+      </span>
+      <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>5分钟</span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>978<span class="pc-show">字数</span></span>
+    </span>
+  </div>
+</header>
+      <div class="post-body">
+        
+          
+        
+        
+        <div class="post-button text-center">
+          <a class="btn" href="https://Ivanlon30000.github.io/post/ke-cheng-bi-ji-ji-qi-xue-xi-shi-zhan-ch8-regression" rel="contents">
+            阅读全文 »
+          </a>
+        </div>
+        
+      </div>
+      
+        <footer class="post-footer">
+          <div class="post-eof"></div>
+        </footer>
+      
+    </div>
+  </article>
+
+  <article class="post-list-box  post box-shadow-wrapper">
+    <div class="article-wrapper bg-color">
+      <header class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://Ivanlon30000.github.io/post/ke-cheng-bi-ji-ji-qi-xue-xi-shi-zhan-ch7-adaboost">
+      [课程笔记] 机器学习实战 ch7-AdaBoost
+    </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span>发布于</span>
+      <span>2019-12-09</span>
+    </span>
+    
+      <span class="meta-item">
+        <span class="post-meta-divider pc-show">|</span>
+        <i class="fa fa-folder-o"></i>
+        <span class="pc-show">分类于</span>
+        
+          
+            <a href="https://Ivanlon30000.github.io/tag/G6BCazp1F">
+              <span>课程笔记</span>
+            </a>、
+          
+        
+          
+            <a href="https://Ivanlon30000.github.io/tag/hRi3ZsCyn7">
+              <span>机器学习</span>
+            </a>
+          
+        
+      </span>
+      <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>4分钟</span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>877<span class="pc-show">字数</span></span>
+    </span>
+  </div>
+</header>
+      <div class="post-body">
+        
+          
+        
+        
+        <div class="post-button text-center">
+          <a class="btn" href="https://Ivanlon30000.github.io/post/ke-cheng-bi-ji-ji-qi-xue-xi-shi-zhan-ch7-adaboost" rel="contents">
+            阅读全文 »
+          </a>
+        </div>
+        
+      </div>
+      
+        <footer class="post-footer">
+          <div class="post-eof"></div>
+        </footer>
+      
+    </div>
+  </article>
+
+  <article class="post-list-box  post box-shadow-wrapper">
+    <div class="article-wrapper bg-color">
+      <header class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://Ivanlon30000.github.io/post/ke-cheng-bi-ji-ji-qi-xue-xi-shi-zhan-ch6-svm">
+      [课程笔记] 机器学习实战 ch6-SVM
+    </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span>发布于</span>
+      <span>2019-12-09</span>
+    </span>
+    
+      <span class="meta-item">
+        <span class="post-meta-divider pc-show">|</span>
+        <i class="fa fa-folder-o"></i>
+        <span class="pc-show">分类于</span>
+        
+          
+            <a href="https://Ivanlon30000.github.io/tag/G6BCazp1F">
+              <span>课程笔记</span>
+            </a>、
+          
+        
+          
+            <a href="https://Ivanlon30000.github.io/tag/hRi3ZsCyn7">
+              <span>机器学习</span>
+            </a>
+          
+        
+      </span>
+      <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>10分钟</span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>1699<span class="pc-show">字数</span></span>
+    </span>
+  </div>
+</header>
+      <div class="post-body">
+        
+          
+        
+        
+        <div class="post-button text-center">
+          <a class="btn" href="https://Ivanlon30000.github.io/post/ke-cheng-bi-ji-ji-qi-xue-xi-shi-zhan-ch6-svm" rel="contents">
+            阅读全文 »
+          </a>
+        </div>
+        
+      </div>
+      
+        <footer class="post-footer">
+          <div class="post-eof"></div>
+        </footer>
+      
+    </div>
+  </article>
+
+  <article class="post-list-box  post box-shadow-wrapper">
+    <div class="article-wrapper bg-color">
+      <header class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://Ivanlon30000.github.io/post/ke-cheng-bi-ji-ji-qi-xue-xi-shi-zhan-ch5-logisticregression">
+      [课程笔记] 机器学习实战 ch5-LogisticRegression
+    </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span>发布于</span>
+      <span>2019-12-09</span>
+    </span>
+    
+      <span class="meta-item">
+        <span class="post-meta-divider pc-show">|</span>
+        <i class="fa fa-folder-o"></i>
+        <span class="pc-show">分类于</span>
+        
+          
+            <a href="https://Ivanlon30000.github.io/tag/G6BCazp1F">
+              <span>课程笔记</span>
+            </a>、
+          
+        
+          
+            <a href="https://Ivanlon30000.github.io/tag/hRi3ZsCyn7">
+              <span>机器学习</span>
+            </a>
+          
+        
+      </span>
+      <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>2分钟</span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>321<span class="pc-show">字数</span></span>
+    </span>
+  </div>
+</header>
+      <div class="post-body">
+        
+          
+        
+        
+        <div class="post-button text-center">
+          <a class="btn" href="https://Ivanlon30000.github.io/post/ke-cheng-bi-ji-ji-qi-xue-xi-shi-zhan-ch5-logisticregression" rel="contents">
+            阅读全文 »
+          </a>
+        </div>
+        
+      </div>
+      
+        <footer class="post-footer">
+          <div class="post-eof"></div>
+        </footer>
+      
+    </div>
+  </article>
+
+  <article class="post-list-box  post box-shadow-wrapper">
+    <div class="article-wrapper bg-color">
+      <header class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://Ivanlon30000.github.io/post/ke-cheng-bi-ji-ji-qi-xue-xi-shi-zhan-ch4-naivebayers">
+      [课程笔记] 机器学习实战 ch4-NaiveBayers
+    </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span>发布于</span>
+      <span>2019-12-09</span>
+    </span>
+    
+      <span class="meta-item">
+        <span class="post-meta-divider pc-show">|</span>
+        <i class="fa fa-folder-o"></i>
+        <span class="pc-show">分类于</span>
+        
+          
+            <a href="https://Ivanlon30000.github.io/tag/G6BCazp1F">
+              <span>课程笔记</span>
+            </a>、
+          
+        
+          
+            <a href="https://Ivanlon30000.github.io/tag/hRi3ZsCyn7">
+              <span>机器学习</span>
+            </a>
+          
+        
+      </span>
+      <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>3分钟</span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>552<span class="pc-show">字数</span></span>
+    </span>
+  </div>
+</header>
+      <div class="post-body">
+        
+          
+        
+        
+        <div class="post-button text-center">
+          <a class="btn" href="https://Ivanlon30000.github.io/post/ke-cheng-bi-ji-ji-qi-xue-xi-shi-zhan-ch4-naivebayers" rel="contents">
+            阅读全文 »
+          </a>
+        </div>
+        
+      </div>
+      
+        <footer class="post-footer">
+          <div class="post-eof"></div>
+        </footer>
+      
+    </div>
+  </article>
+
+  <article class="post-list-box  post box-shadow-wrapper">
+    <div class="article-wrapper bg-color">
+      <header class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://Ivanlon30000.github.io/post/ke-cheng-bi-ji-ji-qi-xue-xi-ch3-decisiontree">
+      [课程笔记] 机器学习实战 ch3-DecisionTree
+    </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span>发布于</span>
+      <span>2019-12-09</span>
+    </span>
+    
+      <span class="meta-item">
+        <span class="post-meta-divider pc-show">|</span>
+        <i class="fa fa-folder-o"></i>
+        <span class="pc-show">分类于</span>
+        
+          
+            <a href="https://Ivanlon30000.github.io/tag/G6BCazp1F">
+              <span>课程笔记</span>
+            </a>、
+          
+        
+          
+            <a href="https://Ivanlon30000.github.io/tag/hRi3ZsCyn7">
+              <span>机器学习</span>
+            </a>
+          
+        
+      </span>
+      <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>3分钟</span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>524<span class="pc-show">字数</span></span>
+    </span>
+  </div>
+</header>
+      <div class="post-body">
+        
+          
+        
+        
+        <div class="post-button text-center">
+          <a class="btn" href="https://Ivanlon30000.github.io/post/ke-cheng-bi-ji-ji-qi-xue-xi-ch3-decisiontree" rel="contents">
+            阅读全文 »
+          </a>
+        </div>
+        
+      </div>
+      
+        <footer class="post-footer">
+          <div class="post-eof"></div>
+        </footer>
+      
+    </div>
+  </article>
+
+  <article class="post-list-box  post box-shadow-wrapper">
+    <div class="article-wrapper bg-color">
+      <header class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://Ivanlon30000.github.io/post/ke-cheng-bi-ji-ji-qi-xue-xi-shi-zhan-ch2-knn">
+      [课程笔记] 机器学习实战 ch2-kNN
+    </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span>发布于</span>
+      <span>2019-12-08</span>
+    </span>
+    
+      <span class="meta-item">
+        <span class="post-meta-divider pc-show">|</span>
+        <i class="fa fa-folder-o"></i>
+        <span class="pc-show">分类于</span>
+        
+          
+            <a href="https://Ivanlon30000.github.io/tag/G6BCazp1F">
+              <span>课程笔记</span>
+            </a>、
+          
+        
+          
+            <a href="https://Ivanlon30000.github.io/tag/hRi3ZsCyn7">
+              <span>机器学习</span>
+            </a>
+          
+        
+      </span>
+      <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>2分钟</span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>436<span class="pc-show">字数</span></span>
+    </span>
+  </div>
+</header>
+      <div class="post-body">
+        
+          
+        
+        
+        <div class="post-button text-center">
+          <a class="btn" href="https://Ivanlon30000.github.io/post/ke-cheng-bi-ji-ji-qi-xue-xi-shi-zhan-ch2-knn" rel="contents">
+            阅读全文 »
+          </a>
+        </div>
+        
+      </div>
+      
+        <footer class="post-footer">
+          <div class="post-eof"></div>
+        </footer>
+      
+    </div>
+  </article>
+  
+              
+              
+<div class="page bg-color">
+  <ul class="pagination-ul">
+    
+    
+      
+        <li class="pagination-li pagination-active">
+            <a href="/page/../">
+              1
+            </a>
+        </li>
+      
+    
+    
+  </ul>
+</div>
+            </section>
+          </div>
+        </div>
+      </div>
+      <div class="footer-box">
+  <footer class="footer">
+    <div class="copyright">
+      © 2019-2020 <i class="fa fa-heart"></i> HsxyHao
+    </div>
+    <div class="poweredby">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+  </footer>
+  
+  
+  <div class=" back-to-top" id="back_to_top">
+    <i class="fa fa-arrow-up"></i>
+    
+    <span class="scrollpercent">
+      <span id="back_to_top_text">0</span>%
+    </span>
+    
+  </div>
+  
+  
+  
+    
+
+  
+</div>
+<script>
+
+  let sideBarOpen = 'sidebar-open';
+  let body = document.body;
+  let back2Top = document.querySelector('#back_to_top'),
+  back2TopText = document.querySelector('#back_to_top_text'),
+  drawerBox = document.querySelector('#drawer_box'),
+  rightSideBar = document.querySelector('.sidebar'),
+  viewport = document.querySelector('body');
+
+  function scrollAnimation(currentY, targetY) {
+   
+    let needScrollTop = targetY - currentY
+    let _currentY = currentY
+    setTimeout(() => {
+      const dist = Math.ceil(needScrollTop / 10)
+      _currentY += dist
+      window.scrollTo(_currentY, currentY)
+      if (needScrollTop > 10 || needScrollTop < -10) {
+        scrollAnimation(_currentY, targetY)
+      } else {
+        window.scrollTo(_currentY, targetY)
+      }
+    }, 1)
+  }
+
+  back2Top.addEventListener("click", function(e) {
+    scrollAnimation(document.scrollingElement.scrollTop, 0);
+    e.stopPropagation();
+    return false;
+  });
+  
+  window.addEventListener('scroll', function(e) {
+    let percent = document.scrollingElement.scrollTop / (document.scrollingElement.scrollHeight - document.scrollingElement.clientHeight) * 100;
+    if (percent > 1 && !back2Top.classList.contains('back-top-active')) {
+      back2Top.classList.add('back-top-active');
+    }
+    if (percent == 0) {
+      back2Top.classList.remove('back-top-active');
+    }
+    if (back2TopText) {
+      back2TopText.textContent = Math.floor(percent);
+    }
+  });
+
+  
+  let hasCacu = false;
+  window.onresize = function() {
+    if (window.width > 991) {
+      calcuHeight();
+    } else {
+      hasCacu = false;
+    }
+  }
+
+  function calcuHeight() {
+    // 动态调整站点概览高度
+    if (!hasCacu && back2Top.classList.contains('pisces') || back2Top.classList.contains('gemini')) {
+      let sideBar = document.querySelector('.sidebar');
+      let navUl = document.querySelector('#site_nav');
+      sideBar.style = 'margin-top:' + (navUl.offsetHeight + navUl.offsetTop + 15) + 'px;';
+      hasCacu = true;
+    }
+  }
+  calcuHeight();
+  
+  let open = false, MOTION_TIME = 300, RIGHT_MOVE_DIS = '320px';
+
+  if (drawerBox) {
+    let rightMotions = document.querySelectorAll('.right-motion');
+    let right = drawerBox.classList.contains('right');
+
+    let transitionDir = right ? "transition.slideRightIn" : "transition.slideLeftIn";
+
+    let openProp, closeProp;
+    if (right) {
+      openProp = {
+        paddingRight: RIGHT_MOVE_DIS 
+      };
+      closeProp = {
+        paddingRight: '0px'
+      };
+    } else {
+      openProp = {
+        paddingLeft: RIGHT_MOVE_DIS 
+      };
+      closeProp = {
+        paddingLeft: '0px'
+      };
+    }
+
+    drawerBox.onclick = function() {
+      open = !open;
+      window.Velocity(rightSideBar, 'stop');
+      window.Velocity(viewport, 'stop');
+      window.Velocity(rightMotions, 'stop');
+      if (open) {
+        window.Velocity(rightSideBar, {
+          width: RIGHT_MOVE_DIS
+        }, {
+          duration: MOTION_TIME,
+          begin: function() {
+            window.Velocity(rightMotions, transitionDir,{ });
+          }
+        })
+        window.Velocity(viewport, openProp,{
+          duration: MOTION_TIME
+        });
+      } else {
+        window.Velocity(rightSideBar, {
+          width: '0px'
+        }, {
+          duration: MOTION_TIME,
+          begin: function() {
+            window.Velocity(rightMotions, {
+              opacity: 0
+            });
+          }
+        })
+        window.Velocity(viewport, closeProp ,{
+          duration: MOTION_TIME
+        });
+      }
+      for (let i = 0; i < drawerBox.children.length; i++) {
+        drawerBox.children[i].classList.toggle('muse-line');
+      }
+      drawerBox.classList.toggle(sideBarOpen);
+    }
+  }
+
+  // 代码高亮
+  hljs.initHighlightingOnLoad();
+</script>
+    </div>
+  </body>
+  <script src="/media/js/motion.js"></script>
 </html>
