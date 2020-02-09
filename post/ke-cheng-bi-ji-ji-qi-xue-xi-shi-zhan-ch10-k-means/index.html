@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>[课程笔记] 机器学习实战 ch10-k-means | 某愚蠢的blog</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Ivanlon30000.github.io/favicon.ico?v=1581249599346">
+<link rel="stylesheet" href="https://Ivanlon30000.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="k-means K均值聚类算法
+IDEA
+无监督学习
+不给定目标变量
+簇
+一类数据
+质心(centroid)
+一组数据的中心, 一般是取均值
+平方误差和
+平方误差和 (SSE, Sum of Squared Error): 样本点与质心距离..." />
+    <meta name="keywords" content="课程笔记,机器学习" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://Ivanlon30000.github.io">
+        <img src="https://Ivanlon30000.github.io/images/avatar.png?v=1581249599346" class="site-logo">
+        <h1 class="site-title">某愚蠢的blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/Ivanlon30000" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+          <a class="social-link" href="https://www.zhihu.com/people/xie-yi-long-82-42" target="_blank">
+            <i class="fab fa-zhihu"></i>
+          </a>
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      某愚蠢的blog
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://Ivanlon30000.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">[课程笔记] 机器学习实战 ch10-k-means</h2>
+            <div class="post-date">2019-12-09</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="k-means-k均值聚类算法">k-means K均值聚类算法</h1>
+<h2 id="idea">IDEA</h2>
+<h3 id="无监督学习">无监督学习</h3>
+<p>不给定目标变量</p>
+<h3 id="簇">簇</h3>
+<p>一类数据</p>
+<h3 id="质心centroid">质心(centroid)</h3>
+<p>一组数据的中心, 一般是取均值</p>
+<h3 id="平方误差和">平方误差和</h3>
+<p>平方误差和 (SSE, Sum of Squared Error): 样本点与质心距离的平方和</p>
+<blockquote>
+<p>SSE 值越小，表示越接近它们的质心. 由于对误差取了平方，因此更加注重那么远离中心的点</p>
+</blockquote>
+<h3 id="算法过程">算法过程</h3>
+<ol>
+<li>随机选取 k 个点作为起始质心, 一般是随机选取</li>
+<li>选取一个样本点, 将其归到最近质心的簇</li>
+<li>更新质心</li>
+<li>重复 2. 3. 直至所有样本点的分类结果不发生变化</li>
+</ol>
+<h3 id="后处理">后处理</h3>
+<p>随机选择的初始质心以及不合适的k值可能导致算法收敛到局部最小值, 使用后处理方法改善这种情况.<br>
+<img src="https://Ivanlon30000.github.io/post-images/1581249584591.png" alt="" loading="lazy"></p>
+<h3 id="二分-k-means-bisecting-k-means">二分 k-means (bisecting k-means)</h3>
+<p>克服 k-means 算法收敛到局部最小值的问题. 算法流程:</p>
+<ol>
+<li>所有样本点看做同一个簇</li>
+<li>选择一个簇将其一分为二使得 SSE 最大程度地减小</li>
+<li>重复步骤 2. 直至簇的数目达 k</li>
+</ol>
+<h2 id="code">CODE</h2>
+<h3 id="k-means">k-means</h3>
+<pre><code class="language-python">def calc_dist(vecA, vecB):
+	&quot;&quot;&quot;
+	计算距离, 这里用的是欧氏距离
+	&quot;&quot;&quot;
+	return sqrt(sum(power(vecA - vecB), 2))
+
+def rand_cent(data, k):
+	&quot;&quot;&quot;
+	随机初始化质心
+	&quot;&quot;&quot;
+	n = data.shape[1]
+	centroids = zeros((k, n))
+	
+	for j in range(n):
+		min_j = data[:, j].min()
+		max_j = data[:, j].max()
+		range_j = max_j - min_j
+		centroids[:, j] = min_j + range_j * random.rand(k, 1)
+
+	return centroids
+
+def k_means(data, k, dist_func=calc_dist, init_cent=rand_cent):
+	&quot;&quot;&quot;
+	k-means 算法
+	dist_func: 计算距离的函数
+	init_cent: 初始化质心的函数
+	&quot;&quot;&quot;
+	m, n = data.shape
+	
+	# 初始化质心和簇
+	cents = init_cent(data, k)				
+	clusters_comp = -1 * ones((m, 2))
+	
+	cluster_changed = -1
+	while cluster_changed != 0:
+		cluster_changed = 0
+		
+		for i in range(m):
+			# 对每一个样本点
+			sample = data[i, :]
+			# 计算距样本点最近的质心
+			min_index, min_dist = min([
+				(index, dist_func(sample, cents[index])) 
+				for index in range(k)
+			], key=lambda x: x[1])
+			
+			if clusters_comp[i, 0] != min_index:
+				# 当前计算出的最近质心与之前的不同, 则更新样本点所属的簇
+				clusters_comp[i, :] = min_index, min_dist**2
+				cluster_changed += 1
+		
+		for cent_i in range(k):
+			# 更新每一个簇的质心
+			samples_in_cluster = data[nonzero(clusters_comp[:, 0].A==cent_i)[0]]
+			centroids[cent_i, :] = mean(samples_in_cluster, axis=0)
+			
+		return centriods, clusters_comp	
+</code></pre>
+<h3 id="二分-k-meas">二分 k-meas</h3>
+<pre><code class="language-python">def bi_k_means(data, k, dist_func=calc_dist):
+	&quot;&quot;&quot;
+	二分k-means
+	&quot;&quot;&quot;
+	m, n = data.shape
+	clusters_comp = zeros((m, 2))
+	centroids = [mean(data, axis=0).tolist()[0], ]
+	
+	for j in range(m):
+		clusters_comp[j, 1] = dist_func(sample, centriods[0])
+
+	while(len(centroids) &lt; k):
+		min_SSE = inf
+		
+		for i, cent in enumerate(centroids):
+			# 对每一个质心, 尝试划分
+			samples_in_cluster = data[nonzero(clusters_comp[:, 0].A==i)[0], :]
+			new_centroids, new_clusters_comp = k_means(samples_in_cluster, 2, dist_func)
+			SSE_splited = sum(new_clusters_comp[:,1]) 
+			SSE_not_splited = sum(clusters_comp[nonzero(clusters_comp[:, 0].A!=i)[0], 1]
+			if SSE_splited + SSE_not_splited &lt; min_SSE:
+				# 如果划分后SSE减小
+				best_split_cent = i
+				best_new_centriods = new_centroids
+				best_clusters_comp = new_clusters_comp
+				min_SSE = SSE_splited + SSE_not_splited
+		
+		best_clusters_comp[nonzeros(best_clusters_comp[:, 0].A==1)[0], 0] = len(centroids)
+		best_clusters_comp[nonzeros(best_clusters_comp[:, 0].A==0)[0], 0] = best_split_cent 
+		centroids[best_split_cent] = best_new_centriods[0, :]
+		centroids.append(best_new_centriods[1, :])
+		clusters_comp[nonzero(clusters_comp[:, 0].A==best_split_cent)[0], :] = best_clusters_comp 
+	
+	return centroids, clusters_comp
+</code></pre>
+<h2 id="detail-and-more">DETAIL AND MORE</h2>
+<ul>
+<li>k-means 优点是易于实现, 但可能收敛到局部最小值, 大规模数据收敛较慢 (因为每次更新都要遍历整个数据集)</li>
+<li>质心距离可以用任意距离公式, 但最后结果将受计算距离函数的影响</li>
+</ul>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://Ivanlon30000.github.io/tag/G6BCazp1F" class="tag">
+                    课程笔记
+                  </a>
+                
+                  <a href="https://Ivanlon30000.github.io/tag/hRi3ZsCyn7" class="tag">
+                    机器学习
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://Ivanlon30000.github.io/post/ke-cheng-bi-ji-ji-qi-xue-xi-shi-zhan-ch8-regression">
+                  <h3 class="post-title">
+                    [课程笔记] 机器学习实战 ch8-Regression
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+
+  </body>
+</html>

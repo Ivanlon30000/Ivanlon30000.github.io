@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>[课程笔记] 机器学习实战 ch3-DecisionTree | 某愚蠢的blog</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Ivanlon30000.github.io/favicon.ico?v=1581249599346">
+<link rel="stylesheet" href="https://Ivanlon30000.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="Decision Tree 决策树
+IDEA
+根据特征划分数据集进而构建决策树
+KEY
+熵(Entropy)
+符号 x 的信息定义为:
+l(x)=−log2p(x)l(x)=-log_2 p(x)
+l(x)=−log2​p(x)
+熵定义为l..." />
+    <meta name="keywords" content="课程笔记,机器学习" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://Ivanlon30000.github.io">
+        <img src="https://Ivanlon30000.github.io/images/avatar.png?v=1581249599346" class="site-logo">
+        <h1 class="site-title">某愚蠢的blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/Ivanlon30000" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+          <a class="social-link" href="https://www.zhihu.com/people/xie-yi-long-82-42" target="_blank">
+            <i class="fab fa-zhihu"></i>
+          </a>
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      某愚蠢的blog
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://Ivanlon30000.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">[课程笔记] 机器学习实战 ch3-DecisionTree</h2>
+            <div class="post-date">2019-12-09</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="decision-tree-决策树">Decision Tree 决策树</h1>
+<h2 id="idea">IDEA</h2>
+<p>根据特征划分数据集进而构建决策树</p>
+<h2 id="key">KEY</h2>
+<h3 id="熵entropy">熵(Entropy)</h3>
+<p>符号 <code>x</code> 的信息定义为:</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mo>−</mo><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mi>p</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">l(x)=-log_2 p(x)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">−</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault">p</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span></span></p>
+<p>熵定义为<code>l(x)</code>的期望</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>H</mi><mo>=</mo><mo>−</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mi>p</mi><mo>(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>)</mo><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mi>p</mi><mo>(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">H = -\sum_{i=1}^np(x_i)log_2 p(x_i)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.08125em;">H</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.929066em;vertical-align:-1.277669em;"></span><span class="mord">−</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6513970000000002em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3000050000000005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.277669em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">p</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault">p</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></p>
+<h3 id="信息增益information-gain">信息增益(Information Gain)</h3>
+<p>哪个特征在划分数据集时起决定性作用: 使用某特征划分数据集后信息增益最大</p>
+<h2 id="code">CODE</h2>
+<ul>
+<li>划分数据集</li>
+</ul>
+<pre><code class="language-python">def split_dataset(dataset, axis, val):
+	&quot;&quot;&quot;
+	划分数据集
+	dataset:	数据集
+	axis:		
+	val:		值
+	&quot;&quot;&quot;
+	ret = []
+	for feat_vec in dataset:
+		if feat_vec[axis] == val:
+			ret.append(feat_vec[:axis] + feat_vec[:axis])
+	return ret
+</code></pre>
+<ul>
+<li>选择最好的划分方式</li>
+</ul>
+<pre><code class="language-python">def choose_best(dataset):
+	&quot;&quot;&quot;
+	从数据集中挑选一个划分数据集最有效的特征
+	dataset: 数据集
+	return 最有效的特征
+	&quot;&quot;&quot;
+	num_feat = len(dataset[0]) - 1
+	# 划分前的香农熵
+	base_entropy = calc_Shannon_entropy(dataset)
+	
+	def info_gain(feat_index):
+		# 计算信息增益
+		feat_unis = set([x[feat_index] for x in dataset])
+		new_entropy = 0
+		for feat in feat_unis:
+			sub_dataset = split_dataset(dataset, feat_index, feat)
+			new_entropy += calc_Shannon_entropy(sub_dataset)
+		return base_entropy - new_entropy
+	
+	feat = max(list(range(num_feat)), key=info_gain)
+	return feat
+</code></pre>
+<ul>
+<li>递归构建决策树</li>
+</ul>
+<pre><code class="language-python">def create_tree(data, labels):
+	&quot;&quot;&quot;
+	递归构建决策树
+	&quot;&quot;&quot;
+	classes = [x[-1] for x in data]
+	
+	# 数据集中的样本类别完全相同，也就是只有一个类
+	if classes.count(classes[0]) == len(classes):
+		return classes[0]
+
+	# 样本只有一个特征，也就是说做一层分类
+	if len(data[0]) == 1:
+		return majority_count(classes)
+	
+	# 挑选最好特征
+	best_feat = choose_best(data)
+	best_feat_label = labels[best_feat]
+	# 初始化决策数或子树
+	decision_tree = {best_feat_label:{}}
+	# 该特征所有可能取值
+	feat_vals = set([x[best_feat] for x in data])
+	
+	# 遍历所有可能取值
+	for val in feat_vals:
+		sub_labels = labels.copy()
+		del(sub_labels[best_feat])
+		# 数据集子集
+		sub_dataset = split_dataset(data, best_feat, val)
+		decision_tree[best_feat_label][val] = create_tree(sub_dataset, sub_labels)
+	
+	# 完成构建数或子树，return
+	return decision_tree
+</code></pre>
+<h2 id="detail-and-more">DETAIL AND MORE</h2>
+<ul>
+<li>如何构造决策树?<br>
+根据当前数据集选择最有效特征划分数据集, 将划分出的子数据集再寻找最有效特征再划分(递归的过程), 直至子数据集中仅含一种类别的样本.</li>
+<li>考试手算信息增益<br>
+<img src="https://Ivanlon30000.github.io/post-images/1581248856554.png" alt="" loading="lazy"></li>
+</ul>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://Ivanlon30000.github.io/tag/G6BCazp1F" class="tag">
+                    课程笔记
+                  </a>
+                
+                  <a href="https://Ivanlon30000.github.io/tag/hRi3ZsCyn7" class="tag">
+                    机器学习
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://Ivanlon30000.github.io/post/ke-cheng-bi-ji-ji-qi-xue-xi-shi-zhan-ch2-knn">
+                  <h3 class="post-title">
+                    [课程笔记] 机器学习实战 ch2-kNN
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+
+  </body>
+</html>

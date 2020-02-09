@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>[课程笔记] 机器学习实战 ch2-kNN | 某愚蠢的blog</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://Ivanlon30000.github.io/favicon.ico?v=1581249599346">
+<link rel="stylesheet" href="https://Ivanlon30000.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="Chapter 2 kNN K近邻算法
+IDEA
+选择与输入样本最相近的 k 个样本进行比较, 统计这 k 个样本的标签, 待分类样本被归类为与统计的 k 个样本最相近的标签.
+KEYWORDS
+
+监督学习
+输入的是特征向量
+已有数据集
+k..." />
+    <meta name="keywords" content="课程笔记,机器学习" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://Ivanlon30000.github.io">
+        <img src="https://Ivanlon30000.github.io/images/avatar.png?v=1581249599346" class="site-logo">
+        <h1 class="site-title">某愚蠢的blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/Ivanlon30000" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+          <a class="social-link" href="https://www.zhihu.com/people/xie-yi-long-82-42" target="_blank">
+            <i class="fab fa-zhihu"></i>
+          </a>
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      某愚蠢的blog
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://Ivanlon30000.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">[课程笔记] 机器学习实战 ch2-kNN</h2>
+            <div class="post-date">2019-12-08</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="chapter-2-knn-k近邻算法">Chapter 2 kNN K近邻算法</h1>
+<h2 id="idea">IDEA</h2>
+<p>选择与输入样本最相近的 k 个样本进行比较, 统计这 k 个样本的标签, 待分类样本被归类为与统计的 k 个样本最相近的标签.</p>
+<h2 id="keywords">KEYWORDS</h2>
+<ul>
+<li>监督学习</li>
+<li>输入的是特征向量</li>
+<li>已有数据集</li>
+<li>k 临近, 多数表决, k 一般小于20</li>
+<li>三要素:
+<ul>
+<li>k 值选择</li>
+<li>距离计算(如<em>欧氏距离</em>)</li>
+<li>分类决策规则(如<em>多数表决</em>)</li>
+</ul>
+</li>
+</ul>
+<h2 id="code">CODE</h2>
+<pre><code class="language-python">def classify_kNN(inX, dataset, labels, k):
+    &quot;&quot;&quot;
+    kNN 算法
+    inX:    待分类样本
+    dataset:已有的数据集
+    labels: 数据集对应标签
+    k:      参数k
+    &quot;&quot;&quot;
+    # 求 inX 与已有数据集中每一个数据的'距离'
+    size = dataset.shape[0]
+    diff_mat = tile(inX, (size, 1)) - dataset
+    sq_diff_mat = diff_mat**2
+    sq_dis = sq_diff_mat.sum(axis=1)
+    # (索引)按距离排序
+    sorted_dist_indices = sq_dis.argsort()
+    class_count = {}
+    for i in range(k):
+        # 第 i 近的样本类别是 vote_label
+        vote_label = lables[sorted_dist_indices[i]]
+        # 
+        class_count[vote_label] = class_count.get(vote_label, 0) + 1
+    
+    # 分类结果是'得票'最高的那个类
+    result = max(class_count.keys(), key=lambda x: class_count[x])
+</code></pre>
+<h2 id="detail-and-more">DETAIL AND MORE</h2>
+<ul>
+<li>
+<p>一般流程</p>
+<ol>
+<li>收集数据：任何方法</li>
+<li>准备数据：距离计算所需要的数值, 最好结构化的数据格式</li>
+<li>分析数据：任何方法</li>
+<li>测试数据：计算错误率</li>
+<li>使用算法：输入样本数据和结构化的输出结果，然后运行k-近邻算法判断输入数据分类结果</li>
+</ol>
+</li>
+<li>
+<p>归一化特征值</p>
+<ul>
+<li>Why<br>
+特征向量的数量级不同</li>
+<li>How<br>
+归一化: 将数据归一化到 <strong>[0,1)</strong> 之间:</li>
+</ul>
+</li>
+</ul>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mi>e</mi><mi>w</mi><mi>V</mi><mi>a</mi><mi>l</mi><mi>u</mi><mi>e</mi><mo>=</mo><mfrac><mrow><mi>o</mi><mi>l</mi><mi>d</mi><mi>V</mi><mi>a</mi><mi>l</mi><mi>u</mi><mi>e</mi><mo>−</mo><mi>m</mi><mi>i</mi><mi>n</mi><mi>V</mi><mi>a</mi><mi>l</mi><mi>u</mi><mi>e</mi></mrow><mrow><mi>m</mi><mi>a</mi><mi>x</mi><mi>V</mi><mi>a</mi><mi>l</mi><mi>u</mi><mi>e</mi><mo>−</mo><mi>m</mi><mi>i</mi><mi>n</mi><mi>V</mi><mi>a</mi><mi>l</mi><mi>u</mi><mi>e</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">newValue = \frac{oldValue - minValue}{maxValue - minValue}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">n</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">u</span><span class="mord mathdefault">e</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.14077em;vertical-align:-0.7693300000000001em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.37144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">u</span><span class="mord mathdefault">e</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">u</span><span class="mord mathdefault">e</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">d</span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">u</span><span class="mord mathdefault">e</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">u</span><span class="mord mathdefault">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7693300000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<ul>
+<li>简单有效</li>
+<li>必须保存全部数据集(空间占用大)</li>
+<li>必须比较全部数据集(算法速度慢)</li>
+<li>不能给出数据的结构信息</li>
+</ul>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://Ivanlon30000.github.io/tag/G6BCazp1F" class="tag">
+                    课程笔记
+                  </a>
+                
+                  <a href="https://Ivanlon30000.github.io/tag/hRi3ZsCyn7" class="tag">
+                    机器学习
+                  </a>
+                
+              </div>
+            
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+
+  </body>
+</html>
